@@ -9,18 +9,8 @@ class Node {
 }
 
 const sumList = (head) => {
-//create a variable to store the sum
-    let storedSum = 0;
-    let current = head;
-    if (current === null) return storedSum;
-    //iterate through the linked list
-    while (current != null) {
-        //add the current element to the stored sum
-        storedSum += current.val;
-        current = current.next
-    }
-    //return stored sum
-    return storedSum;
+    if (head === null) return 0;
+    return head.val + sumList(head.next);
 };
 
 //test
