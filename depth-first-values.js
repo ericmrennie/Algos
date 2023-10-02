@@ -50,4 +50,4 @@ c.right = f;
 //  / \     \
 // d   e     f
 
-console.log(depthFirstValues(a)); 
+console.log(depthFirstValues(a));   
