@@ -12,23 +12,11 @@ class Node {
 }
 
 const treeMinValue = (root) => {
-// declare a minimum value equal to the root
-    let minimum = root.val;
-    // declare a queue
-    const queue = [ root ];
-    // iterate through the tree
-    while (queue.length > 0) {
-        // set a current node
-        const current = queue.shift();
-        // if the current is less than the minimum, update the minimum
-        if (current.val < minimum) minimum = current.val
-        //build the stack
-        if (current.left !== null) queue.push(current.left);
-        if (current.right !== null) queue.push(current.right);
-    }
-    //return the minimum
-    return minimum;
-};
+    if (root === null) return Infinity;
+    const smallestLeftValue = treeMinValue(root.left);
+    const smallestRightValue = treeMinValue(root.right);
+    return Math.min(root.val, smallestLeftValue, smallestRightValue);
+}
 
 const a = new Node(3);
 const b = new Node(11);
