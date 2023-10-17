@@ -12,6 +12,7 @@ const hasPath = (graph, src, dst) => {
         for (let neighbor of graph[current]) {
         // if we hit the dst, then return true  
         if (neighbor === dst) return true;
+        stack.push(neighbor);
         }
     }
     // return false
