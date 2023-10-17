@@ -2,23 +2,16 @@
 // The function should return a boolean indicating whether or not there exists a directed path between the source and destination nodes.
 
 const hasPath = (graph, src, dst) => {
-    // declare a stack
-    const stack = [ src ];
-    // iterate through the stack
-    while (stack.length > 0) {
-        // declare a current
-        const current = stack.pop();
-        // iterate through the graph at current
-        for (let neighbor of graph[current]) {
-        // if we hit the dst, then return true  
-        if (neighbor === dst) return true;
-        stack.push(neighbor);
-        }
+    if (src === dst) return true
+    for (let neighbor of graph[src]) {
+        if (hasPath(graph, neighbor, dst) === true) {
+        return true;
+        };
     }
-    // return false
     return false;
-};
-
+}
+  
+  
 const graph = {
     f: ['g', 'i'],
     g: ['h'],
@@ -27,5 +20,5 @@ const graph = {
     j: ['i'],
     k: []
 };
-
+  
 console.log(hasPath(graph, 'f', 'k')); // true
