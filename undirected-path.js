@@ -2,24 +2,48 @@
 // The function should return a boolean indicating whether or not there exists a path between nodeA and nodeB.
 
 const undirectedPath = (edges, nodeA, nodeB) => {
-    // create the adjacent list
-    const graph = buildGraph(edges);
-
-};
-
-const buildGraph = (edges) => {
-    //empty graph object
-    const graph = {};
-    for (let edge of edges) {
-        const [ a, b ] = edge;
-        if (!(a in graph)) graph[a] = [];
-        if (!(b in graph)) graph[b] = []; 
-        graph[a].push(b);
-        graph[b].push(a);  
-    }
-
-return graph;
+    // create the graph list
+    const graph = createGraphFunction(edges);
+    return mainAlgo(graph, nodeA, nodeB, new Set());
 }
+    
+// graph list function
+const createGraphFunction = (edges) => {
+    // declare an empty graph object
+    const graph = {};
+
+    // cycle through the edges
+    for (let edge of edges) {
+        // declare an edge constant
+        const [ a, b ] = edge;
+        // if the graph object at element a within the edge constant, does not exist, create it
+        if (!(a in graph)) graph[a] = []; 
+        // if the graph object at element b within the edge constant, does not exist, create it
+        if (!(b in graph)) graph[b] = []; 
+        // push into graph at a, edge at b
+        graph[a].push(b);
+        // push into graph at b, edge at a
+        graph[b].push(a);
+    }
+    // return graph
+    return graph;
+}
+
+// main algo (graph, nodeA, nodeB)
+const mainAlgo = (graph, src, dst, visited) => {
+    if (src === dst) return true;
+    if (visited.has(src)) return false;
+
+    visited.add(src);
+
+    for (let neighbor of graph[src]) {
+        if (mainAlgo(graph, neighbor, dst, visited) === true) {
+        return true
+        }
+    }
+    return false;
+}
+
 
 const edges = [
     ['i', 'j'],
