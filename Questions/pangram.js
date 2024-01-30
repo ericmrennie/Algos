@@ -50,4 +50,4 @@ const pangrams = (s) => {
     }
 }
 
-console.log(pangram("The quick brown fox jumps over the lazy dog"));
+console.log(pangrams("The quick brown fox jumps over the lazy dog"));
