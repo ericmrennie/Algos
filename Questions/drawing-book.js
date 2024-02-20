@@ -13,5 +13,20 @@ Given n and p, find and print the minimum number of pages that must be turned in
 */
 
 const pageCount = (n, p) => {
-    //
+    // calculate the number of page turns needed from the beginning of the book
+    // divide the target page number 'p' by 2
+    // if 'p' is even, the page turn count is 'p / 2'
+    // if 'p' is odd, the page turn count is '(p - 1) / 2'
+    let beginning = Math.floor(p / 2);
+
+    // calculate the number of page turns needed from the end of the book
+    let ending = undefined;
+    // calculate the number of pages form the end of the book to 'p'
+    const numberOfPages = n - p;
+    // divide this number by 2 to get the page turn count
+    ending = Math.ceil(numberOfPages/2);
+
+    return Math.min(beginning, ending);
 }
+
+console.log(pageCount(30, 6));
