@@ -31,4 +31,4 @@ const towerBreakers= (n, m) => {
     if (turns % 2 === 0) return 2;
 }
 
-console.log(towerBreakers(2,2);
+console.log(towerBreakers(2,2));
