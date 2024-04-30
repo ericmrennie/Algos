@@ -6,15 +6,13 @@ const containsDuplicate = (nums) => {
     // loop through the array of nums
     for (let i = 0; i < nums.length; i++) {
         // if the object store contains the current element, return true
-        if (visited[nums[i]]) {
+        if (nums[i] in visited) {
             return true;
         } else {
-            visited[i] = nums[i];
+            visited[nums[i]] = true;
         }
-        console.log(visited);
     }
     // return false
-    console.log(visited);
     return false;
 };
 
