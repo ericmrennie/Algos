@@ -26,7 +26,7 @@ const topKFrequent = (nums, k) => {
     // sort the values in descending order
     sortedArray.sort((a, b) => b[1] - a[1]);
     // return an array of the keys with the two highest values
-    return sortedArray.slice(0, 2).map(entry => entry[0]);
+    return sortedArray.slice(0, k).map(entry => entry[0]);
 }
 
 //tests
