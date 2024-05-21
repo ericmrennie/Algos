@@ -6,16 +6,16 @@
 // Find and return the maximum profit you can achieve.
 
 const maxProfit = (prices) => {
-    // edge case
-    if (prices.length <= 1) return 0;
-    // declare a max profit
     let maxProfit = 0;
-    // iterate through the prices array
+
     for (let i = 1; i < prices.length; i++) {
-        // if the price on the current day is greater than the previous day, add the profit
-        if (prices[i] > prices[i - 1]) maxProfit += prices[i] - prices[i - 1];
+        // If the price on the current day is greater than the previous day,
+        // add the profit (the difference between the current and previous prices)
+        if (prices[i] > prices[i - 1]) {
+            maxProfit += prices[i] - prices[i - 1];
+        }
     }
-    // return maxProfit
+
     return maxProfit;
 }
 
