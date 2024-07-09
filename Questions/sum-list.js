@@ -8,20 +8,31 @@ class Node {
     }
 }
 
+// const sumList = (head, sum = 0) => {
+//     if (head === null) return sum;
+//     sum += head.val;
+//     return sumList(head.next, sum);
+// }
+
+// const sumList = (head) => {
+//     let sum = 0;
+//     while (head !== null) {
+//         sum += head.val;
+//         head = head.next;
+//     }
+//     return sum;
+// }
+
 const sumList = (head) => {
-//create a variable to store the sum
-    let storedSum = 0;
-    let current = head;
-    if (current === null) return storedSum;
-    //iterate through the linked list
-    while (current != null) {
-        //add the current element to the stored sum
-        storedSum += current.val;
-        current = current.next
-    }
-    //return stored sum
-    return storedSum;
-};
+    let sum = 0;
+    return _sumList(head, sum);
+}
+
+const _sumList = (head, sum) => {
+    if (head === null) return sum;
+    sum += head.val;
+    return _sumList(head.next, sum);
+}
 
 //test
 const a = new Node(2);
