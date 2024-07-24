@@ -10,23 +10,30 @@ class Node {
    }
 }
 
-const reverseList = (head) => {
-    // store the head as current variable
-    let current = head;
-    // variable for storing next initially set to null
-    let prev = null;
-    // while current is not null
-    while (current !== null) {
-        const next = current.next;
-        // set the current next to next variable
-        current.next = prev;
-        // set the next variable to equal current
-        prev = current;
-        // increment current
-        current = next;
-    }
-    // return head;
-    return prev;
+// const reverseList = (head) => {
+//     // store the head as current variable
+//     let current = head;
+//     // variable for storing next initially set to null
+//     let prev = null;
+//     // while current is not null
+//     while (current !== null) {
+//         const next = current.next;
+//         // set the current next to next variable
+//         current.next = prev;
+//         // set the next variable to equal current
+//         prev = current;
+//         // increment current
+//         current = next;
+//     }
+//     // return head;
+//     return prev;
+// }
+
+const reverseList = (head, prev = null) => {
+  if (head === null) return prev;
+  const next = head.next;
+  head.next = prev;
+  return reverseList(next, head);
 }
 
 // test
