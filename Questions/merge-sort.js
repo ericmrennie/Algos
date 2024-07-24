@@ -16,28 +16,39 @@ class Node {
 }
 
 const mergeLists = (head1, head2) => {
-
-    let head;
-    if (head1.val < head2.val) {
-        head = head1;
-        head1 = head1.next
-    }
-    if (head2.val < head1.val) {
-        head = head2;
-        head2 = head2.next;
-    }
-
-    while (head1 !== null && head2 !== null) {
-        if (head1.val < head2.val) {
-            const current = head1;
-            head1.next = head2;
-            head1 = current.next;
+    // create a dummy head node to use its next pointer
+    const dummy = new Node(null);
+    // set the dummy to the head
+    let head = dummy;
+    // set a current1 pointer
+    let current1 = head1;
+    // set a current2 pointer
+    let current2 = head2;
+    // set a tail equal to the dummy head
+    let tail = head;
+    // loop through the nodes
+    while (current1 !== null && current2 !== null) {
+        // look at which current is smaller since we are sorting in increasing order
+        if (current1.val < current2.val) {
+            tail.next = current1;
+            // increment the pointer in the list you chose
+            current1 = current1.next;
+            // set tail to tail.next
         } else {
-            const current = head2;
-            head2.next = head1;
-            head2 = current.next;
+            tail.next = current2;
+            current2 = current2.next;
         }
+        tail = tail.next;
     }
+    // if there is a LL that still has nodes left, then point the tail to it
+    if (current1) {
+        tail.next = current1;
+    }
+    if (current2) {
+        tail.next = current2;
+    }
+    // return head
+    return head.next;
 
 }
 
