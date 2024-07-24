@@ -34,12 +34,11 @@ const mergeLists = (head1, head2) => {
             // increment the pointer in the list you chose
             current1 = current1.next;
             // set tail to tail.next
-            tail = tail.next;
         } else {
             tail.next = current2;
             current2 = current2.next;
-            tail = tail.next;
         }
+        tail = tail.next;
     }
     // if there is a LL that still has nodes left, then point the tail to it
     if (current1) {
