@@ -9,21 +9,29 @@ Return true if target exists within matrix or false otherwise.
 */
 
 const searchMatrix = (matrix, target) => {
+    if (!matrix.length || !matrix[0].length) return false;
 
-    let row;
+    let m = matrix.length;
+    let n = matrix[0].length;
+    let left = 0;
+    let right = m * n - 1;
 
-    for (let i = 0; i < matrix.length; i++) {
-        console.log(matrix[i][0]);
-        if (matrix[i][0] === target) return true;
-        if (matrix[i][0] < target) row = matrix[i];
-        
+    while (left <= right) {
+        let mid = Math.floor((left + right) / 2);
+        let midValue = matrix[Math.floor(mid / n)][mid % n];
+
+        if (midValue === target) {
+            return true;
+        } else if (midValue < target) {
+            left = mid + 1;
+        } else {
+            right = mid - 1;
+        }
     }
-    console.log(row);
-    for (let i = 0; i < row.length; i++) {
-        if (row[i] === target) return true;
-    }
+
     return false;
-}
+};
+
 
 // test
 const matrix = [[1,2,4,8],[10,11,12,13],[14,20,30,40]];
