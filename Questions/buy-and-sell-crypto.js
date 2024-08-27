@@ -7,19 +7,25 @@ Return the maximum profit you can achieve. You may choose to not make any transa
 */
 
 const maxProfit = (prices) => {
-    // declare a variable to keep track of the maximum profit
-    let maximumProfit = 0;
-    // iterate through the array stopping at the first integer
-    for (let i = 0; i < prices.length; i++) {
-        // now iterate through the array starting at i + 1
-        for (let j = i + 1; j < prices.length; j++) {
-            // subtract i from i + 1
-            // if the profit is greater than the maximum profit, uppdate the maximum profit
-            maximumProfit = Math.max(maximumProfit, (prices[j] - prices[i]));
+
+    // maxProfit variable
+    let max = 0;
+    // place pointer one at the first day to buy
+    let pointerOne = 0;
+    // while pointer two is less than the length of the array
+    while (pointerOne < prices.length) {
+        // place pointer two at the first day to buy plus 1
+        let pointerTwo = pointerOne + 1;
+        while (pointerTwo < prices.length) {
+            // if the difference of pointer one minus pointer two 
+            if (prices[pointerTwo] > prices[pointerOne]) max = Math.max(max, prices[pointerTwo] - prices[pointerOne]);
+            // increment pointer one and two
+            pointerTwo++;
         }
+        pointerOne++;
     }
-    // return the maximum profit
-    return maximumProfit;
+    // return max
+    return max;
 }
 
 // test
