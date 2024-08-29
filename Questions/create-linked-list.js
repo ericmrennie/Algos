@@ -14,6 +14,14 @@ const createLinkedList = (values) => {
     return dummyHead.next;
 };
 
+// recursive
+// const createLinkedList = (values, i = 0) => {
+//     if (i === values.length) return null;
+//     const head = new Node(values[i]);
+//     head.next = createLinkedList(values, i + 1);
+//     return head;
+// };
+
 // test
 class Node {
     constructor(val) {
