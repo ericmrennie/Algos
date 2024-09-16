@@ -31,8 +31,14 @@ class Node {
 
 // recursive
 const depthFirstValues = (root) => {
+    if (root === null) return [];
     
-}
+    const leftValues = depthFirstValues(root.left);
+    console.log(leftValues)
+    const rightValues = depthFirstValues(root.right);
+    console.log(rightValues)
+    return [ root.val, ...leftValues, ...rightValues ];
+};
 
 
 // test
