@@ -9,26 +9,37 @@ class Node {
     }
 }
 
+// const depthFirstValues = (root) => {
+//     // egde case for if root is null
+//     if (root === null) return [];
+//     // variable to store values
+//     const values = [];
+//     // start a stack with the root
+//     const stack = [root];
+//     // check if the stack is empty
+//     while (stack.length) {
+//         // if it's not empty, then set current to popping an item off the stack
+//         const current = stack.pop();
+//         // add current to the values
+//         values.push(current.val);
+//         // check to see if the current has a left and right child and then push them into the stack
+//         if (current.right) stack.push(current.right);
+//         if (current.left) stack.push(current.left);
+//     }
+//     return values;
+// }
+
+// recursive
 const depthFirstValues = (root) => {
-if (root === null)
-    return [];
-
-const values = [];
-const stack = [ root ];
-
-while (stack.length > 0) {
-    const node = stack.pop();
-    values.push(node.val);
+    if (root === null) return [];
     
-    if (node.right !== null)
-    stack.push(node.right);
-    
-    if (node.left !== null)
-    stack.push(node.left);
-}
-
-return values;
+    const leftValues = depthFirstValues(root.left);
+    console.log(leftValues)
+    const rightValues = depthFirstValues(root.right);
+    console.log(rightValues)
+    return [ root.val, ...leftValues, ...rightValues ];
 };
+
 
 // test
 const a = new Node('a');

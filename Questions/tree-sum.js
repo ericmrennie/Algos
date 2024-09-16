@@ -10,25 +10,25 @@ constructor(val) {
 }
 
 const treeSum = (root) => {
-// edge case
-if (root === null) return 0;
-// sum variable
-let sum = 0;
-// stack
-const stack = [ root ];
-// iterate through tree
-while (stack.length > 0) {
-    // current
-    let current = stack.pop();
-    // add to the sum variable
-    sum += current.val;
-    // if the left of the current is not null, push to the stack
-    if (current.left !== null) stack.push(current.left);
-    // if the right of the current is not null, push to the stack
-    if (current.right !== null) stack.push(current.right);
-}
-//reassign the root???
-return sum;
+    // edge case
+    if (root === null) return [];
+    // sum variable
+    let sum = 0;
+    // stack variable
+    const stack = [ root ];
+    // while stack is not empty
+    while (stack.length) {
+        // declare a current
+        const current = stack.pop();
+        // add its value to the sum
+        sum += current.val;
+        // check if current has a left and right
+        // push to stack
+        if (current.right) stack.push(current.right);
+        if (current.left) stack.push(current.left);
+    }
+    // return sum
+    return sum;
 };
 
 const a = new Node(1);
