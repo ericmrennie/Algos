@@ -10,26 +10,24 @@ constructor(val) {
 }
 
 const breadthFirstValues = (root) => {
-// edge case - if the root is null, return an empty array
-if (root === null) return [];
-// results array
-const results = [];
-// queue array with the root initialized inside 
-const queue = [ root ];
-
-// iterate through tree
-while (queue.length > 0) {
-    // set current node = queue.shift()
-    const current = queue.shift();
-    // push the current node into the results array
-    results.push(current.val);
-    // if current.left is not null, push the current.left into the queue
-    if (current.left != null) queue.push(current.left);
-    // if current.right is not null, push the current.right into the queue
-    if (current.right != null) queue.push(current.right);
-}
-// return results array
-return results;
+    // edge case for if root is null
+    if (root === null) return [];
+    // values storage
+    const values = [];
+    // begin a queue with a root node
+    const queue = [ root ];
+    // while the queue is populated
+    while(queue.length) {
+        // declare a current value
+        const current = queue.shift();
+        // push the current into values
+        values.push(current.val);
+        // check for current's left and right values
+        if (current.left) queue.push(current.left);
+        if (current.right) queue.push(current.right);
+    }
+    // return values
+    return values;
 }
 
 // test
