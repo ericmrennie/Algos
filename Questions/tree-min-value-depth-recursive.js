@@ -16,7 +16,7 @@ const treeMinValue = (root) => {
     const smallestLeftValue = treeMinValue(root.left);
     const smallestRightValue = treeMinValue(root.right);
     return Math.min(root.val, smallestLeftValue, smallestRightValue);
-}
+};
 
 const a = new Node(3);
 const b = new Node(11);
