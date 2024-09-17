@@ -9,24 +9,29 @@ constructor(val) {
 }
 }
 
+// const treeIncludesDepth = (root, target) => {
+//     // edge case
+//     if (root === null) return false;
+//     // initialize a stack
+//     const stack = [ root ];
+//     // iterate through the tree
+//     while (stack.length) {
+//         // if we come into contact with the target value, return true
+//         const current = stack.pop();
+//         if (current.val === target) return true;
+//         if (current.right) stack.push(current.right);
+//         if (current.left) stack.push(current.left);
+//     }
+//     // return false
+//     return false;
+// };
+
+// recursive
 const treeIncludesDepth = (root, target) => {
-//edge case
-if (root === null || target === null) return false;
-// declare a stack
-const stack = [ root ]
-// iterate through the tree
-while (stack.length > 0) {
-    // set a current variable equal to the stack.pop
-    const current = stack.pop();
-    // if current is equal to the target return true
-    if (current.val === target) return true;
-    // build the stack
-    if (current.right !== null) stack.push(current.right);
-    if (current.left !== null) stack.push(current.left);
+    if (root === null) return false;
+    if (root.val === target) return true;
+    return treeIncludesDepth(root.left, target) || treeIncludesDepth(root.right, target);
 }
-//return false
-return false;
-};
 
 const a = new Node("a");
 const b = new Node("b");
