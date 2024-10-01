@@ -11,9 +11,9 @@ class Node {
     }
 }
 
-const maxPathSum = (root) => {
+const maxPathSum = (root) => { 
     if (root === null) return -Infinity;
-    if (root.right === null && root.left === null) return root.val;
+    if (root.left === null && root.right === null) return root.val;
     const maxChildPathSum = Math.max(maxPathSum(root.left), maxPathSum(root.right));
     return root.val + maxChildPathSum;
 };
