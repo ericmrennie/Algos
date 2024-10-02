@@ -11,6 +11,19 @@ class Node {
     }
 }
 
+//iterative
+// const treeMinValue = (root) => {
+//   let minimum = Infinity;
+//   const stack = [ root ];
+//   while (stack.length) {
+//     const current = stack.pop();
+//     if (current.val < minimum) minimum = current.val;
+//     if (current.right) stack.push(current.right);
+//     if (current.left) stack.push(current.left);
+//   }
+//   return minimum;
+// };
+
 const treeMinValue = (root) => {
     if (root === null) return Infinity;
     const smallestLeftValue = treeMinValue(root.left);
