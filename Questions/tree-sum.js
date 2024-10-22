@@ -2,11 +2,11 @@
 // The function should return the total sum of all values in the tree.
 
 class Node {
-constructor(val) {
-    this.val = val;
-    this.left = null;
-    this.right = null;
-}
+    constructor(val) {
+        this.val = val;
+        this.left = null;
+        this.right = null;
+    }
 }
 
 const treeSum = (root) => {
