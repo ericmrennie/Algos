@@ -14,36 +14,25 @@ class Node {
 }
 
 const howHigh = (root) => {
-    if (root === null) return -1;
-    let count = root.val ? 1 : 0;
-
-    let leftCount = count += howHigh(root.left);
-    console.log(leftCount);
-    let rightCount = count += howHigh(root.right);
+  if (root === null) return -1;
     
-    return Math.max(leftCount, rightCount);
+  // Calculate left and right heights independently
+  let leftCount = 1 + howHigh(root.left);
+  let rightCount = 1 + howHigh(root.right);
+  
+  return Math.max(leftCount, rightCount);
 }
 
 const a = new Node('a');
-const b = new Node('b');
 const c = new Node('c');
-const d = new Node('d');
-const e = new Node('e');
-const f = new Node('f');
 
-a.left = b;
 a.right = c;
-b.left = d;
-b.right = e;
-c.right = f;
 
 //      a
-//    /   \
-//   b     c
-//  / \     \
-// d   e     f
+//       \
+//        c
 
-console.log(howHigh(a)); // -> 2
+console.log(howHigh(a)); // -> 1
 
 // const a = new Node('a');
 // const b = new Node('b');
